@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pesawat Trend Tracker</title>
+  <meta name="description" content="A polished, accessible one-page static site highlighting the strongest trend opportunity around &#39pesawat&#39 (airplanes) with quick insights and visuals." />
+  <style>
+    :root{
+      --bg: #0e111a;
+      --card: #181e2b;
+      --text: #e6eaf6;
+      --muted: #a9b3c7;
+      --accent: #4cc9f0;
+      --accent-2: #7b61ff;
+      --grid: rgba(255,255,255,.06);
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial;
+      background: radial-gradient(1200px circle at 10% -10%, rgba(76,201,240,.15), transparent 40%),
+                  radial-gradient(900px circle at 90% 0%, rgba(123,97,255,.15), transparent 40%),
+                  var(--bg);
+      color: var(--text);
+      line-height:1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    header.site-header{
+      position: sticky; top:0; z-index:10;
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 1rem 1.25rem;
+      background: rgba(12,14,20,.85);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .brand{display:flex; align-items:center; gap:.75rem}
+    .brand svg{width:28px; height:28px}
+    .brand h1{font-size:1.05rem; margin:0; letter-spacing:.3px}
+    nav{display:flex; gap:.75rem; flex-wrap:wrap}
+    nav a{color:var(--text); text-decoration:none; padding:.5rem .75rem; border-radius:6px}
+    nav a:focus-visible, button:focus-visible{outline:2px solid #fff; outline-offset:2px}
+    main{max-width:1100px; margin:0 auto; padding:2rem 1rem 4rem}
+    section{margin:2rem 0}
+    h2{font-size:1.6rem; margin:.25rem 0 0.5rem}
+    .subtitle{color:var(--muted); font-size:.95rem; margin-bottom: .75rem}
+    .grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:1rem}
+    .card{background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+          border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:1rem; box-shadow: var(--shadow);}
+    .card h3{margin:0 0 .5rem 0; font-size:1.1rem}
+    .lead{font-size:.95rem; color:var(--muted)}
+    .stat{font-weight:700; font-size:1.15rem; margin-top:.25rem}
+    .illustration{width:100%; height:180px; display:block}
+    .cta{display:inline-flex; align-items:center; gap:.5rem; padding:.6rem 1rem;
+         border-radius:999px; border:1px solid rgba(76,201,240,.8);
+         background: linear-gradient(135deg, rgba(76,201,240,.25), rgba(123,97,255,.25));
+         color:#e8fbff; text-decoration:none; cursor:pointer}
+    .badge{display:inline-flex; align-items:center; gap:.35rem;
+           padding:.25rem .6rem; border-radius:999px; background:#1e2730; color:#d3e8ff;
+           font-size:.8rem; border:1px solid rgba(255,255,255,.08)}
+    footer{text-align:center; color:var(--muted); padding-top:1rem}
+    /* responsive tweaks for accessibility */
+    @media (max-width: 700px){
+      header.site-header{flex-direction:column; align-items:flex-start; gap:.5rem}
+      nav{width:100%; justify-content: flex-start; margin-top:.25rem}
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header class=&quot;site-header&quot; aria-label=&quot;Site header&quot;&gt;
+    &lt;div class=&quot;brand&quot; aria-label=&quot;Brand&quot;&gt;
+      &lt;svg viewBox=&quot;0 0 64 64&quot; role=&quot;img&quot; aria-label=&quot;Plane icon&quot;&gt;
+        &lt;defs&gt;
+          &lt;linearGradient id=&quot;g&quot; x1=&quot;0&quot; x2=&quot;1&quot; y1=&quot;0&quot; y2=&quot;1&quot;&gt;
+            &lt;stop stop-color=&quot;#4cc9f0&quot;/&gt;
+            &lt;stop offset=&quot;1&quot; stop-color=&quot;#7b61ff&quot;/&gt;
+          &lt;/linearGradient&gt;
+        &lt;/defs&gt;
+        &lt;path fill=&quot;url(#g)&quot; d=&quot;M2 32l44-20v12l14-6-6 18 6 6-16 5-4-6-32-5z&quot;/&gt;
+        &lt;circle cx=&quot;54&quot; cy=&quot;18&quot; r=&quot;4&quot; fill=&quot;#8be3ff&quot;/&gt;
+      &lt;/svg&gt;
+      &lt;h1&gt;Pesawat Trend Tracker&lt;/h1&gt;
+    &lt;/div&gt;
+    &lt;nav aria-label=&quot;Main navigation&quot;&gt;
+      &lt;a href=&quot;#insights&quot; role=&quot;link&quot;&gt;Insights&lt;/a&gt;
+      &lt;a href=&quot;#range&quot; role=&quot;link&quot;&gt;What to do&lt;/a&gt;
+      &lt;a href=&quot;#about&quot; role=&quot;link&quot;&gt;About&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main id=&quot;main&quot; role=&quot;main&quot;&gt;
+    &lt;section id=&quot;hero&quot; aria-labelledby=&quot;hero-title&quot;&gt;
+      &lt;div class=&quot;card&quot; style=&quot;padding:1.25rem; display:flex; gap:1rem; align-items:center;&quot;&gt;
+        &lt;div style=&quot;flex:1&quot;&gt;
+          &lt;h2 id=&quot;hero-title&quot; style=&quot;margin:.25rem 0 0.25rem&quot;&gt;Strongest opportunity: pesawat (aircraft) interest spike&lt;/h2&gt;
+          &lt;p class=&quot;lead&quot; style=&quot;margin:.25rem 0 0.75rem&quot;&gt;
+            High traffic trend with a dramatic increase signals public curiosity and timely relevance.
+            This one-page site distills actionable, accessible, and visual insights for professionals
+            seeking a polished static portfolio or landing on GitHub Pages.
+          &lt;/p&gt;
+          &lt;a class=&quot;cta&quot; href=&quot;#insights&quot; aria-label=&quot;View insights section&quot;&gt;
+            View Insights
+            &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;svg class=&quot;illustration&quot; aria-label=&quot;Abstract plane visualization&quot; role=&quot;img&quot; viewBox=&quot;0 0 600 180&quot; style=&quot;flex:1; max-width:420px;&quot;&gt;
+          &lt;defs&gt;
+            &lt;linearGradient id=&quot;gradBlue&quot; x1=&quot;0&quot; x2=&quot;1&quot; y1=&quot;0&quot; y2=&quot;0&quot;&gt;
+              &lt;stop stop-color=&quot;#4cc9f0&quot;/&gt;
+              &lt;stop offset=&quot;1&quot; stop-color=&quot;#7b61ff&quot;/&gt;
+            &lt;/linearGradient&gt;
+          &lt;/defs&gt;
+          &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;600&quot; height=&quot;180&quot; fill=&quot;#0f1520&quot;/&gt;
+          &lt;path d=&quot;M0,120 C120,90 240,60 360,90 S540,150 600,120&quot; fill=&quot;none&quot; stroke=&quot;url(#gradBlue)&quot; stroke-width=&quot;6&quot; stroke-linecap=&quot;round&quot;/&gt;
+          &lt;polygon points=&quot;40,120 80,110 60,145&quot; fill=&quot;url(#gradBlue)&quot;/&gt;
+          &lt;polygon points=&quot;520,100 560,90 540,130&quot; fill=&quot;url(#gradBlue)&quot;/&gt;
+          &lt;circle cx=&quot;300&quot; cy=&quot;60&quot; r=&quot;6&quot; fill=&quot;#fff&quot;/&gt;
+        &lt;/svg&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section id=&quot;insights&quot; aria-labelledby=&quot;insights-title&quot; class=&quot;insights-section&quot;&gt;
+      &lt;h2 id=&quot;insights-title&quot;&gt;Key insights for the pesawat trend&lt;/h2&gt;
+      &lt;p class=&quot;subtitle&quot;&gt;Strongest signals distilled for quick action. Fully accessible and keyboard friendly.&lt;/p&gt;
+
+      &lt;div class=&quot;grid&quot; role=&quot;region&quot; aria-label=&quot;Insight cards&quot;&gt;
+        &lt;article class=&quot;card&quot; tabindex=&quot;0&quot; aria-label=&quot;Insight 1: Search volume&quot;&gt;
+          &lt;h3&gt;Massive search volume&lt;/h3&gt;
+          &lt;p class=&quot;lead&quot;&gt;Pesawat shows a search volume around 10,000 with a 1000% increase—signaling high public interest.&lt;/p&gt;
+          &lt;div class=&quot;stat&quot; aria-live=&quot;polite&quot;&gt;Volume: 10000&lt;/div&gt;
+        &lt;/article&gt;
+
+        &lt;article class=&quot;card&quot; tabindex=&quot;0&quot; aria-label=&quot;Insight 2: Trend growth&quot;&gt;
+          &lt;h3&gt;Explosive growth&lt;/h3&gt;
+          &lt;p class=&quot;lead&quot;&gt;Rapid growth suggests timely content could capture attention quickly on static pages.&lt;/p&gt;
+          &lt;div class=&quot;stat&quot; aria-live=&quot;polite&quot;&gt;Increase: 1000%&lt;/div&gt;
+        &lt;/article&gt;
+
+        &lt;article class=&quot;card&quot; tabindex=&quot;0&quot; aria-label=&quot;Insight 3: Category&quot;&gt;
+          &lt;h3&gt;Contextual relevance&lt;/h3&gt;
+          &lt;p class=&quot;lead&quot;&gt;Categories include Law and Government, indicating potentially practical information framing.&lt;/p&gt;
+          &lt;div class=&quot;stat&quot; aria-live=&quot;polite&quot;&gt;Category: Law &amp; Government&lt;/div&gt;
+        &lt;/article&gt;
+
+        &lt;article class=&quot;card&quot; tabindex=&quot;0&quot; aria-label=&quot;Insight 4: Quick-start&quot;&gt;
+          &lt;h3&gt;Fast to deploy&lt;/h3&gt;
+          &lt;p class=&quot;lead&quot;&gt;Static, single-page design keeps load times snappy on GitHub Pages without tooling.&lt;/p&gt;
+          &lt;div class=&quot;stat&quot; aria-live=&quot;polite&quot;&gt;Build: 0 dependencies&lt;/div&gt;
+        &lt;/article&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section id=&quot;range&quot; aria-labelledby=&quot;range-title&quot; class=&quot;range-section&quot;&gt;
+      &lt;h2 id=&quot;range-title&quot;&gt;What you can launch next&lt;/h2&gt;
+      &lt;p class=&quot;subtitle&quot;&gt;Suggested one-page deliverables that suit a professional static site portfolio.&lt;/p&gt;
+
+      &lt;div class=&quot;grid&quot; role=&quot;region&quot; aria-label=&quot;Recommendations&quot;&gt;
+        &lt;div class=&quot;card&quot; role=&quot;article&quot; aria-label=&quot;Mini project: Flight Trends Overview&quot;&gt;
+          &lt;h3&gt;Flight Trends Overview&lt;/h3&gt;
+          &lt;p class=&quot;lead&quot;&gt;A concise landing page summarizing top flights and related questions, with accessible charts (SVG).&lt;/p&gt;
+          &lt;div class=&quot;stat&quot; aria-live=&quot;polite&quot;&gt;Status: Ready to implement&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;card&quot; role=&quot;article&quot; aria-label=&quot;Mini project: Quick Start Guide&quot;&gt;
+          &lt;h3&gt;Quick Start Guide&lt;/h3&gt;
+          &lt;p class=&quot;lead&quot;&gt;A bootstrapped guide for developers to publish a GitHub Pages site with semantic HTML and inline CSS/JS.&lt;/p&gt;
+          &lt;div class=&quot;stat&quot; aria-live=&quot;polite&quot;&gt;Status: Ready to publish&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;card&quot; role=&quot;article&quot; aria-label=&quot;Mini project: Accessibility Audit&quot;&gt;
+          &lt;h3&gt;Accessibility Audit&lt;/h3&gt;
+          &lt;p class=&quot;lead&quot;&gt;Checklist and examples to ensure WCAG AA compliance for static pages.&lt;/p&gt;
+          &lt;div class=&quot;stat&quot; aria-live=&quot;polite&quot;&gt;Status: In progress&lt;/div&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section id=&quot;about&quot; aria-labelledby=&quot;about-title&quot; class=&quot;about-section&quot;&gt;
+      &lt;h2 id=&quot;about-title&quot;&gt;About this site&lt;/h2&gt;
+      &lt;p class=&quot;subtitle&quot; style=&quot;margin-bottom:.75rem&quot;&gt;A self-contained, production-ready single-page site designed for GitHub Pages. Built with semantic HTML, embedded CSS, and vanilla JavaScript to ensure reliability, accessibility, and fast performance.&lt;/p&gt;
+      &lt;p class=&quot;lead&quot; style=&quot;max-width:720px&quot;&gt;Structure emphasizes readability, keyboard navigation, and responsive layout. No external dependencies or tooling are required—just a plain repo with an index.html you can host on GitHub Pages.&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;footer aria-label=&quot;Site footer&quot;&gt;
+    &lt;span&gt;© 2026 Pesawat Trend Tracker&lt;/span&gt;
+  &lt;/footer&gt;
+
+  &lt;script&gt;
+    // Simple enhancement: keep focus-visible state and a tiny smooth scroll for anchor links
+    (function(){
+      function smoothScroll(e){
+        if (e.target.tagName.toLowerCase() === &#39;a&#39; &amp;&amp; e.target.getAttribute(&#39;href&#39;).startsWith(&#39;#&#39;)) {
+          var id = e.target.getAttribute(&#39;href&#39;).slice(1);
+          var el = document.getElementById(id);
+          if (el) {
+            e.preventDefault();
+            el.scrollIntoView({behavior:&#39;smooth&#39;, block:&#39;start&#39;});
+            history.pushState(null, &#39;&#39;, &#39;#&#39;+id);
+          }
+        }
+      }
+      document.addEventListener(&quot;click&quot;, smoothScroll);
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+INDEX_HTML_END
